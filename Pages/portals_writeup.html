@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CPE_471_Graphics_Final</title>
+</head>
+
+<body style="margin: 160px;">
+<h1>
+  <header><center>Rendering Portals in OpenGL</center>
+  </header>
+</h1>
+<center>
+  &nbsp;<img src="images/portals/green.png" width="320" height="200" alt=""/><img src="images/portals/red.jpg" width="320" height="200" alt=""/><img src="images/portals/blue.png" width="320" height="200" alt=""/>
+</center>
+
+<h2>Overview</h2>
+<p>In my final project I developed and implemented portals capable of transporting the player between different environments. My goal was to create a portal class that could be placed in any direction, angle, or allowed to move without breaking smooth visual continuity.</p>
+<h3>Key Graphics Technologies</h3>
+<ul>
+	<li>Multi-pass rendering</li>
+	<li>Stencil Buffers</li>
+	<li>Manipulation of Depth and Color buffers</li>
+	<li>View and Perspective Matrix Manipulations</li>
+	<li>Collision detection (contact with portals)</li>
+	<li>Skyboxes</li>
+</ul>
+<h3>Rendering</h3>
+<p>To create a portal effect in OpenGL, there are two main strategies:</p>
+<ul>
+<li><b>Rendering to a texture</b>, which involves drawing the virtual portal scene to the framebuffer and drawing it on the portal as a texture. This is the method used in <a href="https://www.digipen.edu/fileadmin/website_data/gallery/game_websites/NarbacularDrop/" target="_blank">Narbacular Drop</a>.</li>
+<li><b>Render a the stencil buffer</b> this technique involves utilizing the stencil buffer as a mask to mask out all but the part of the virtual scene you want to show through the portal. This is the technique I implemented as it’s the same as <a href="http://www.antichamber-game.com/" target="_blank">AntiChamber</a> and <a href="http://store.steampowered.com/app/400/Portal/">Portal 1</a>.</li>
+</ul>
+<p>As far as implementation goes, I placed a lot of effort in reading through the OpenGL documentation on stencil buffers as they are hard to debug. But once I understood what each component was doing, I was able to follow the invaluable step by step instructions <a href="https://th0mas.nl/2013/05/19/rendering-recursive-portals-with-opengl/">Thomas Rinsma provides in his write up</a> of his attempting to render portals using OpenGL. His blog post continues and provides source code for recursively rendering the portals inside each other to simulate the endless portal effect seen in the Portal games.</p>
+<center><img src="images/portal_recursion.PNG" width="480" height="270" alt=""/></center>
+<p> I took this screenshot in test chamber 14 in Portal 1, on my 4k display at home I was able to count the eight recursive rendering calls before the portal is displayed as a white circle. As the game came out in 2007 I doubt they thought it was necessary to go any deeper. In Portal 2 however they used a different strategy altogether and used a recursively drawn texture past the first portal that intentionally curves to the side to obscure the vanishing point, I'd be very interested in how they made this effect as it can be disabled in the games "shader" settings, meaning that it’s probably computed as a texture being repeated passed to the GPU and then drawn inside itself.</p>
+<h3>Demo Scene</h3>
+<p>To demonstrate what my portal code can and cannot do, I built 3 test chambers, one green, one red, and one blue. Through the green portal I used only axis aligned portals, as their virtual camera and position matrices are by far the easiest to set up as they rely on just inversing the player's position over the plane dividing the two portals. In the red portal is where things change, to get views to rotate along with the portals as well as work for all horizontal orientations of portals, I had to rewrite the code that constructs the virtual view matrix. My algorithm utilizes the players position and angle relative to the position and angle that defines the source portal, and maps it virtually to where it should be in the destination portal's space. This works great I was unable to break it even in some of my more lag-inducing tests. The final blue test chamber is my nemesis, these portals all have vertical rotations which threw my virtual camera look direction and position out of whack. Due to time constraints/mental frustration I was unable to solve this final twist. (The Portal games limit portals to only PI/4 angles which I have a hunch allows them just to enter a simple switch statement with only 8 possible transforms, far simpler that what I was implementing.)</p>
+<h3>Bonus Ideas</h3>
+<p>My implementation utilizes near plane clipping that was just brought up to the edge of the portal directly out from the player, which makes weird artifacts if you turn sideways as parts of the scene through the portal get cut. However, after speaking with Scott K, who had a great implementation of axis aligned portals in his cool "Not AntiChamber" project this quarter, I learned that you can do Oblique View Frustum Clipping which can allow you to align the near plane in the projection matrix to a plane (in our case the portal). In Scott's implementation this looks great.</p>
+
+</body>
+</html>
