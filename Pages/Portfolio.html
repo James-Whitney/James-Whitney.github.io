@@ -208,7 +208,7 @@
 											<li>Texas Instruments Development Boards</li>
 										</ul>
 										<a href=""></a>
-										<p>As the final project for a microcontrollers course using a Texas Instruments <a href="http://www.ti.com/tool/MSP-EXP432P401R">MSP432</a> development board I made a device that allows a user to power a standard outlet based on a temperature reading.  The intended use case for this device is to allow a user to set the water temperature in a slow-cooker to a specific target, allowing them to <a href="https://en.wikipedia.org/wiki/Sous-vide">sous-vide</a> cook food.  The device takes readings from a waterproof temperature sensor place inside the slow-cooker and switches the power to a solid-state relay that powers an outlet (that the slow-cooker is plugged into).  The regulated temperature can be controlled with a set of buttons and the current and set temperatures are both displayed on a seven-segment display.</p>
+										<p>For the final project for a microcontrollers course using a Texas Instruments <a href="http://www.ti.com/tool/MSP-EXP432P401R">MSP432</a> development board I made a device that allows a user to power a standard outlet based on a temperature reading.  The intended use case for this device is to allow a user to set the water temperature in a slow-cooker to a specific target, allowing them to <a href="https://en.wikipedia.org/wiki/Sous-vide">sous-vide</a> cook food.  The device takes readings from a waterproof temperature sensor place inside the slow-cooker and controls the power through a solid-state relay connected to an outlet (that the slow-cooker is plugged into).  The regulated temperature can be controlled with a set of buttons and the current and set temperatures are both displayed on a seven-segment display.</p>
 
 										<hr />
 										<!-- Portals in OpenGL -->
@@ -227,7 +227,11 @@
 											<li>Manipulation of Depth/Color/Stencil buffers</li>
 										</ul>
 										<a href=""></a>
-										<p>As the final project for my 3D computer graphics course I was tasked with creating an interesting interactive program that utilized 3D computer graphics.  I ambitiously chose to attempt to implement portal mechanics as seen in games series like <a href="https://en.wikipedia.org/wiki/Portal_(video_game)">Portal</a>.  My goal was to create a portal class (C++) that could be placed in any direction, angle, or allowed to move without breaking smooth visual continuity.  This is actually quite different from the traditional portal games which require 45-degree alignments and prevents portals from moving in the environment, which I discovered during this project was done intentionally as designing algorithms that are able to position virtual cameras for dynamic portal locations are quite complex.  A write-up made for the project can be found <a href="portals_writeup.html">here</a> that also includes the entire assembly program.</p>
+										<p>As the final project for my 3D computer graphics course I was tasked with creating an interesting interactive program that utilized 3D computer graphics.  I ambitiously chose to attempt to implement portal mechanics similar to what is seen in <a href="https://en.wikipedia.org/wiki/Portal_(video_game)">Portal</a>.  My goal was to create a portal class (C++) that could be placed in any direction, angle, or allowed to move in a scene without breaking smooth visual continuity.  This is actually quite different from the Portal games which require 45-degree alignments and prevents portals from moving in the environment, which I discovered during this project was done intentionally as the algorithm I developed to position virtual cameras for dynamic portal locations was quite complex.</p>
+
+										<div class="row aln-center">
+											<a href="portals_writeup.html" class="button primary">View the Final Report</a>
+										</div>
 
 										<hr />
 										<!-- Space Invaders on an FPGA -->
@@ -241,7 +245,12 @@
 											<li>FPGA development boards</li>
 										</ul>
 										<a href=""></a>
-										<p>After implementing the RAT CPU (an in-house RISC architecture developed by faculty at Cal Poly) over eight weeks in VHDL and deployed on a <a href="https://store.digilentinc.com/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/">Basys 3 FPGA</a> board, my partner and I where tasked with creating an interactive and visual program built in RAT assembly.  Our project was a version of <a href="https://en.wikipedia.org/wiki/Space_Invaders">Space Invaders</a> complete with sprites, firing mechanics, and a score counter.  The program was mostly interrupt driven from keyboard controls and worked closely with a provided VGA controller (also implemented in VHDL).  If you are interested in the project and want to learn more, a final report can be found <a href="files/BASYSpace_Invaders.pdf">here</a>.</p>
+										<p>After implementing the RAT CPU (an in-house RISC architecture developed by faculty at Cal Poly) over eight weeks in VHDL and deployed it on a <a href="https://store.digilentinc.com/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/">Basys 3 FPGA</a> board, my partner and I were tasked with creating an interactive and visual program built in RAT assembly.  Our project was a version of <a href="https://en.wikipedia.org/wiki/Space_Invaders">Space Invaders</a> complete with sprites and firing mechanics.  The program was mostly interrupt driven from keyboard controls and worked closely with a provided VGA controller (also implemented in VHDL).  The write-up can be found below and includes the entire assembly program.</p>
+
+										<div class="row aln-center">
+											<a href="files/BASYSpace_Invaders.pdf" class="button primary">View the Final Report</a>
+										</div>
+
 									</div>
 							</section>
 
